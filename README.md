@@ -2,6 +2,10 @@
 
    <h1 align="center">Welcome to Hytro! 👋</h1>
 
+   <br />
+    <img src="https://i.ibb.co/TrkdJQ3/Readme-thumbnail1-Hytro.png" alt="Project Banner">
+    <br/><br/>
+
    <div>
       <img src="https://img.shields.io/badge/-React_Native-black?style=for-the-badge&logoColor=white&logo=react&color=61DAFB" alt="reactnative" />
       <img src="https://img.shields.io/badge/-Expo-black?style=for-the-badge&logoColor=white&logo=expo&color=000020" alt="expo" />
@@ -28,7 +32,6 @@ Hytro is a mobility application developed with **React Native**, offering an int
 - [🔋 Features](#features)
 - [🚀 Getting Started](#getting-started)
 - [📜 Environment Variables](#environment-variables)
-- [🛠 Installation](#installation)
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
@@ -82,7 +85,7 @@ Hytro is a mobility application developed with **React Native**, offering an int
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/hytro.git
+git clone https://github.com/Rahim21/Hytro.git
 cd hytro
 ```
 
@@ -103,7 +106,7 @@ In the output, you'll find options to open the app in a:
 - [development build](https://docs.expo.dev/develop/development-builds/introduction/)
 - [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
 - [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo. Download the app and scan the QR code on your respective device to view the project.
 
 ## <a name="environment-variables">📜 Environment Variables</a>
 
@@ -132,21 +135,5 @@ Replace the placeholder values with your actual Clerk, Stripe, NeonDB, Google Ma
 - [NeonDB](https://neon.tech/)
 - [Google Maps](https://console.cloud.google.com/)
 - [Geoapify](https://www.geoapify.com/)
-
-## <a name="installation">🛠 Installation</a>
-
-Install the project dependencies using npm:
-
-```bash
-npm install
-```
-
-### Running the Project
-
-```bash
-npx expo start
-```
-
-Download the [Expo Go](https://expo.dev/go) app and scan the QR code on your respective device to view the project.
 
 ---
