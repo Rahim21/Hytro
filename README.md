@@ -110,25 +110,31 @@ In the output, you'll find options to open the app in a:
 
 ## <a name="environment-variables">📜 Environment Variables</a>
 
-Create a new file named `.env` in the root of your project and add the following content:
+To create a new `.env` file in the root of your project, start by making a copy of the existing `.env.example` file. You can do this by running the following command:
 
 ```bash
-EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=
+cp .env.example .env
+```
 
-EXPO_PUBLIC_PLACES_API_KEY=
-EXPO_PUBLIC_DIRECTIONS_API_KEY=
+Next, open the `.env` file and replace the placeholder values with your actual keys:
 
-DATABASE_URL=
+```bash
+EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key_here
+
+EXPO_PUBLIC_PLACES_API_KEY=your_places_api_key_here
+EXPO_PUBLIC_DIRECTIONS_API_KEY=your_directions_api_key_here
+
+DATABASE_URL=your_database_url_here
 
 EXPO_PUBLIC_SERVER_URL=https://hytro.dev/
 
-EXPO_PUBLIC_GEOAPIFY_API_KEY=
+EXPO_PUBLIC_GEOAPIFY_API_KEY=your_geoapify_api_key_here
 
-EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY=
-STRIPE_SECRET_KEY=
+EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key_here
+STRIPE_SECRET_KEY=your_stripe_secret_key_here
 ```
 
-Replace the placeholder values with your actual Clerk, Stripe, NeonDB, Google Maps, and Geoapify credentials. You can obtain these credentials by signing up on:
+Make sure to replace `your_x_key_here` with your actual Clerk, Stripe, NeonDB, Google Maps, and Geoapify credentials. You can obtain these credentials by signing up on:
 
 - [Clerk](https://clerk.com/)
 - [Stripe](https://stripe.com/)
