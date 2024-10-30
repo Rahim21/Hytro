@@ -32,6 +32,8 @@ Hytro is a mobility application developed with **React Native**, offering an int
 - [🔋 Features](#features)
 - [🚀 Getting Started](#getting-started)
 - [📜 Environment Variables](#environment-variables)
+- [📋 Snippets (Code to Copy)](#snippets)
+- [🔗 Links](#links)
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
@@ -141,5 +143,105 @@ Make sure to replace `your_x_key_here` with your actual Clerk, Stripe, NeonDB, G
 - [NeonDB](https://neon.tech/)
 - [Google Maps](https://console.cloud.google.com/)
 - [Geoapify](https://www.geoapify.com/)
+
+## <a name="snippets">📋 Snippets</a>
+
+Here are some code snippets from the project to help you get started quickly.
+
+### Setup
+
+<details>
+<summary><code>.vscode/settings.json</code></summary>
+
+```json
+{
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
+}
+```
+
+</details>
+
+### Schema
+
+<details>
+<summary><code>CREATE Drivers Table SQL Query</code></summary>
+
+```sql
+CREATE TABLE drivers (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    profile_image_url TEXT,
+    car_image_url TEXT,
+    car_seats INTEGER NOT NULL CHECK (car_seats > 0),
+    rating DECIMAL(3, 2) CHECK (rating >= 0 AND rating <= 5)
+);
+```
+
+</details>
+
+<details>
+<summary><code>CREATE Rides Table SQL Query</code></summary>
+
+```sql
+CREATE TABLE rides (
+    ride_id SERIAL PRIMARY KEY,
+    origin_address VARCHAR(255) NOT NULL,
+    destination_address VARCHAR(255) NOT NULL,
+    origin_latitude DECIMAL(9, 6) NOT NULL,
+    origin_longitude DECIMAL(9, 6) NOT NULL,
+    destination_latitude DECIMAL(9, 6) NOT NULL,
+    destination_longitude DECIMAL(9, 6) NOT NULL,
+    ride_time INTEGER NOT NULL,
+    fare_price DECIMAL(10, 2) NOT NULL CHECK (fare_price >= 0),
+    payment_status VARCHAR(20) NOT NULL,
+    driver_id INTEGER REFERENCES drivers(id),
+    user_id VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+</details>
+
+<details>
+<summary><code>CREATE Users Table SQL</code></summary>
+
+```sql
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    clerk_id VARCHAR(50) UNIQUE NOT NULL
+);
+```
+
+</details>
+
+## <a name="links">🔗 Links</a>
+
+Here are some useful links to resources and documentation for setting up and integrating the main technologies used in this project:
+
+- <a href="https://www.nativewind.dev/quick-starts/expo" target="_blank">Expo NativeWind Setup</a>
+- <a href="https://www.nativewind.dev/v4/getting-started/typescript" target="_blank">TypeScript Support for
+  NativeWind</a>
+- <a href="https://docs.expo.dev/guides/using-eslint/" target="_blank">Eslint and Prettier Setup</a>
+- <a href="https://neon.tech/" target="_blank">Serverless NeonDB</a>
+- <a href="https://go.clerk.com/DtiSBEI" target="_blank">Clerk Auth</a>
+- <a href="https://clerk.com/docs/quickstarts/expo" target="_blank">Clerk Expo Quickstart</a>
+- <a href="https://clerk.com/docs/custom-flows/oauth-connections" target="_blank">Clerk Expo OAuth</a>
+- <a href="https://www.geoapify.com/" target="_blank">Geoapify Map</a>
+- <a href="https://docs.stripe.com/payments/accept-a-payment?platform=react-native&ui=payment-sheet" target="_blank">
+  Stripe React Native SDK</a>
+- <a href="https://docs.stripe.com/payments/accept-a-payment-deferred" target="_blank">Stripe</a>
 
 ---
