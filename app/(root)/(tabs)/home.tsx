@@ -1,4 +1,7 @@
-import { SignedIn, SignedOut, useUser } from "@clerk/clerk-expo";
+import { useUser } from "@clerk/clerk-expo";
+import { useAuth } from "@clerk/clerk-expo";
+import * as Location from "expo-location";
+import { router } from "expo-router";
 import { FlatList, Text, View, Image, ActivityIndicator } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import RideCard from "@/components/RideCard";
@@ -6,6 +9,8 @@ import { images, icons } from "@/constants";
 import { TouchableOpacity } from "react-native";
 import GoogleTextInput from "@/components/GoogleTextInput";
 import Map from "@/components/Map";
+import { useLocationStore } from "@/store";
+import { useEffect, useState } from "react";
 
 const recentRides = [
   {
@@ -115,11 +120,50 @@ const recentRides = [
 ];
 
 export default function Page() {
+  const { setUserLocation, setDestinationLocation } = useLocationStore();
   const { user } = useUser();
+  const { signOut } = useAuth();
   const loading = true;
 
-  const handleSignOut = () => {};
-  const handleDestinationPress = () => {};
+  const [hasPermission, setHasPermission] = useState(false);
+
+  const handleSignOut = () => {
+    signOut();
+    router.replace("/(auth)/sign-in");
+  };
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setHasPermission(false);
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+
+      const address = await Location.reverseGeocodeAsync({
+        latitude: location.coords?.latitude!,
+        longitude: location.coords?.longitude!,
+      });
+
+      setUserLocation({
+        latitude: location.coords?.latitude,
+        longitude: location.coords?.longitude,
+        address: `${address[0].name}, ${address[0].region}`,
+      });
+    })();
+  }, []);
+
+  const handleDestinationPress = (location: {
+    latitude: number;
+    longitude: number;
+    address: string;
+  }) => {
+    setDestinationLocation(location);
+
+    router.push("/(root)/find-ride");
+  };
 
   return (
     <SafeAreaView className="bg-general-500">

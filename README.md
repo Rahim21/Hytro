@@ -123,6 +123,7 @@ Next, open the `.env` file and replace the placeholder values with your actual k
 ```bash
 EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key_here
 
+EXPO_PUBLIC_GOOGLE_API_KEY=your_google_api_key_here
 EXPO_PUBLIC_PLACES_API_KEY=your_places_api_key_here
 EXPO_PUBLIC_DIRECTIONS_API_KEY=your_directions_api_key_here
 
@@ -240,6 +241,7 @@ Here are some useful links to resources and documentation for setting up and int
 - <a href="https://clerk.com/docs/quickstarts/expo" target="_blank">Clerk Expo Quickstart</a>
 - <a href="https://clerk.com/docs/custom-flows/oauth-connections" target="_blank">Clerk Expo OAuth</a>
 - <a href="https://www.geoapify.com/" target="_blank">Geoapify Map</a>
+- <a href="https://console.cloud.google.com/" target="_blank">Google Cloud API</a>
 - <a href="https://docs.stripe.com/payments/accept-a-payment?platform=react-native&ui=payment-sheet" target="_blank">
   Stripe React Native SDK</a>
 - <a href="https://docs.stripe.com/payments/accept-a-payment-deferred" target="_blank">Stripe</a>
